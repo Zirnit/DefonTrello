@@ -29,19 +29,16 @@ def detalle_pedido(numero):
         fechaCrea = pedidoJson.json()["orderData"]["creationDate"][0:19]
         fechaVenc = pedidoJson.json()["orderData"]["expirationDate"][0:19]
         localPedido = pedidoJson.json()["orderData"]["shopID"]
-        detallePedido = ["Código \t", "Cant. \t", "Descripción\n"]
         comentario = pedidoJson.json()["orderData"]["comment"]
-        if comentario == None:
-            comentario = ""
-        for item in pedidoJson.json()["orderData"]["details"]:
-            detallePedido.append(item["code"])
-            detallePedido.append(" \t")
-            detallePedido.append(str(item["count"]))
-            detallePedido.append(" \t")
-            detallePedido.append(item["name"])
-            detallePedido.append("\n")
-        detallePedido.append("\n"+comentario)
-        detallePedido = "".join(detallePedido)
+        comentario_factura = pedidoJson.json()["orderData"]["billingComment"]
+        comentario_despacho = pedidoJson.json()["orderData"]["dispatchComment"]
+        detallePedido = ""
+        if comentario:
+            detallePedido += "\nComentario: "+comentario
+        if comentario_factura:
+            detallePedido += "\nComentario factura: "+comentario_factura
+        if comentario_despacho:
+            detallePedido += "\nComentario despacho: "+comentario_despacho
         nombrePedidoTrello = str(numero)+" - "+nombreCliente
         return nombrePedidoTrello, detallePedido, fechaCrea, fechaVenc, localPedido
 

@@ -68,7 +68,9 @@ def elimina_Trello2(Compras, tarjetas):
 
 # Función principal, que ejecuta las funciones necesarias para correr el código
 
-def actualizar_datos(Compras):
+def principal():
+    Compras = obtenerCompras()
+    global registro_compras
     if Compras != registro_compras:
         tarjetas = obtenerTarjetas()
         for item in Compras:
@@ -76,11 +78,6 @@ def actualizar_datos(Compras):
                 cargar_trello(item, Compras, tarjetas)
         registro_compras = Compras
     # elimina_Trello2(Compras, tarjetas)
-
-def principal():
-    Compras = obtenerCompras()
-    global registro_compras
-    actualizar_datos(Compras)
 
 # Bucle que mantiene el programa actualizándose   
 while True:

@@ -38,20 +38,20 @@ def modifica_en_trello(numero, tarjetas, fecha):
 
 def post_in_trello(nombre, detalle, fecha, direccionCliente, comuna, local):
     if "0-02 MAURICIO DANIEL BRAVO CORDERO" in nombre:
-        etiquetas = [TT.etiqueta_Sodexo, TT.etiqueta_por_preparar]
+        etiquetas = [TT.etiqueta_por_preparar_ruta]
         lista = TT.facturas_idList
         coordenada, latitude, longitude = PS.obtenerCoordenadas(direccionCliente, comuna)
     elif local == "MONS.":
-        etiquetas = [TT.etiqueta_Monsalve, TT.etiqueta_por_preparar]
+        etiquetas = [TT.etiqueta_Monsalve_ruta, TT.etiqueta_por_preparar_ruta]
         lista = TT.mons_idList
         coordenada = ""
     elif local == "PLAYA":
-        etiquetas = [TT.etiqueta_Playa, TT.etiqueta_por_preparar]
+        etiquetas = [TT.etiqueta_Playa_ruta, TT.etiqueta_por_preparar_ruta]
         lista = TT.facturas_idList
         coordenada, latitude, longitude = PS.obtenerCoordenadas(direccionCliente, comuna)
                 # ZRP.ingresa_punto(direccionCliente, comuna, latitude, longitude, detalle,fecha,nombre), "\n", detalle, fecha, nombre
     elif local == "Local":
-        etiquetas = [TT.etiqueta_Santiago, TT.etiqueta_por_preparar]
+        etiquetas = [TT.etiqueta_Santiago_ruta, TT.etiqueta_por_preparar_ruta]
         lista = TT.facturas_idList
         coordenada, latitude, longitude = PS.obtenerCoordenadas(direccionCliente, comuna)
                 # ZRP.ingresa_punto(direccionCliente, comuna, latitude, longitude, detalle,fecha,nombre), "\n", detalle, fecha, nombre

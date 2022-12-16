@@ -50,13 +50,13 @@ def modifica_en_trello(numero, pedidos, tarjetas, fechaC):
 
 def post_in_trello(numero, nombre, detalle, fechaC, fechaV, local):
     if "0-02 MAURICIO DANIEL BRAVO CORDERO" in nombre:
-        etiqueta = TT.etiqueta_Sodexo
+        etiqueta = TT.etiqueta_Sodexo_pedidos
         lista = TT.sodexo_idList
     elif local == "MONS.":
-        etiqueta = TT.etiqueta_Monsalve
+        etiqueta = TT.etiqueta_Monsalve_pedidos
         lista= TT.monsalve_idList
     elif local == "PLAYA":
-        etiqueta = TT.etiqueta_Playa
+        etiqueta = TT.etiqueta_Playa_pedidos
         lista = TT.playa_idList
     else:
         etiqueta = False

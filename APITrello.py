@@ -31,21 +31,21 @@ en_ruta_idList = "6373dd6bc5df92016c7705fe" # En ruta
 recibidos_idList = "6373dd910ea7d20154813028" # Recibidos
 
 # Etiquetas de Trello board "Pedidos"
-etiqueta_Playa = "62eaecd5dfd104854cc9ff3d"
-etiqueta_Monsalve = "62f691943b8e600bfc3bad29"
-etiqueta_Sodexo = "63728b8b472fe7012578ce78"
+etiqueta_Playa_pedidos = "62eaecd5dfd104854cc9ff3d"
+etiqueta_Monsalve_pedidos = "62f691943b8e600bfc3bad29"
+etiqueta_Sodexo_pedidos = "63728b8b472fe7012578ce78"
 
 # Etiquetas de Trello board "Ruta"
-etiqueta_Monsalve = "6340611b61a1b1037f317ff4"
-etiqueta_chof1 = "6340612e7185cb002419d7a2"
-etiqueta_chof2 = "634061382a7d6f02e84bd353"
+etiqueta_Monsalve_ruta = "6340611b61a1b1037f317ff4"
+etiqueta_chof1_ruta = "6340612e7185cb002419d7a2"
+etiqueta_chof2_ruta = "634061382a7d6f02e84bd353"
 etiqueta_chof_otros = "63406141a4859a0397ffea4b"
-etiqueta_Playa = "63407b296d9b0901ab0596a9"
-etiqueta_Santiago = "6345b9aaa55a4402dd5dde39"
-etiqueta_por_preparar = "6390a06d0eaba4049b16e0e0"
+etiqueta_Playa_ruta = "63407b296d9b0901ab0596a9"
+etiqueta_Santiago_ruta = "6345b9aaa55a4402dd5dde39"
+etiqueta_por_preparar_ruta = "6390a06d0eaba4049b16e0e0"
 
 # Etiquetas de Trello board "Compras"
-etiqueta_Buscar = "63908b900b85c702061ab85f"
+etiqueta_Buscar_compras = "63908b900b85c702061ab85f"
 
 # Create Trello card
 def post_trello(nombre, detalle, fechaC=False, fechaV=False, coordenada=False, idLabels=False, idList=False):

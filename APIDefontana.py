@@ -46,12 +46,15 @@ def detalle_pedido(numero):
 def obtener_b64(numero):
     obtener_b64_URL = "Order/GetOrderStandardPDFDocumentBase64"
     URL = Base_URL+obtener_b64_URL
-    querystring = {"folio":numero}
+    querystring = {"folio" : numero}
     response = requests.request("GET", URL, headers=HK.headersDefontana, params=querystring).json()
-    try:
-        return response["document"]
-    except:
-        return None
+    # Trata de extraer el documento 5 intentos antes de retornar False
+    for _ in range(5):
+        try:
+            return response["document"]
+        except Exception as e:
+            print(e)
+    return False
 
 
 # Ruta

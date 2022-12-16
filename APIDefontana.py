@@ -122,9 +122,9 @@ def consulta_Cliente(id):
 def lista_Compras():
     lista_Compras_URL = "PurchaseOrder/List"
     URL = Base_URL+lista_Compras_URL
-    querystring1 = {"FromDate":FR.hace2Semanas,"ToDate":FR.hoy,"ItemsPerPage":"100","Page":"0"}
+    querystring1 = {"FromDate":FR.hace1mes,"ToDate":FR.hoy,"ItemsPerPage":"100","Page":"0"}
     listaComprasJson2 = requests.request("GET", URL, headers=HK.headersDefontana, params=querystring1).json()
-    querystring2 = {"FromDate":FR.hace2Semanas,"ToDate":FR.hoy,"ItemsPerPage":"100","Page":"1"}
+    querystring2 = {"FromDate":FR.hace1mes,"ToDate":FR.hoy,"ItemsPerPage":"100","Page":"1"}
     listaComprasJson = requests.request("GET", URL, headers=HK.headersDefontana, params=querystring2).json()
     listaComprasDefon = {}
     for i in listaComprasJson["data"]:

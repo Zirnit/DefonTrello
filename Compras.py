@@ -34,11 +34,11 @@ def cargar_trello(numero, Compras, tarjetas):
 def post_in_trello(nombre, detalle, fechaEmision, fechaRecepcion, comuna, despacho):
     if despacho == "Calle Poeta Pedro Prado 1689 oficina 06":
         etiqueta = ""
-        lista = TT.ordenes_idList
+        lista = TT.ordenes_idList_compras
         coordenada = ""
     else:
         etiqueta = ""
-        lista = TT.buscar_idList
+        lista = TT.buscar_idList_compras
         detalle += f"\nIr a buscar a {despacho}"
         coordenada, latitude, longitude= PS.obtenerCoordenadas(despacho, comuna)
     TT.post_trello(nombre, detalle, fechaC=fechaEmision, fechaV=fechaRecepcion, coordenada=coordenada, idLabels=etiqueta, idList=lista)
@@ -46,19 +46,19 @@ def post_in_trello(nombre, detalle, fechaEmision, fechaRecepcion, comuna, despac
 def modificar_en_trello(numero, Compras, tarjetas, fechaEmision, fechaRecepcion):
     estado = Compras[numero]
     if estado == "Aprobado" and fechaRecepcion == FR.hoy:
-        TT.mod_trello(tarjetas[numero], "false", TT.en_ruta_idList)
+        TT.mod_trello(tarjetas[numero], "false", TT.en_ruta_idList_compras)
     elif estado == "Aprobado":
         pass
     elif datetime.strptime(fechaEmision, "%Y-%m-%dT%H:%M:%S").date() < FR.hace2Semanas and estado == "Cerrado":
         elimina_Trello(numero, tarjetas)
     elif estado == "Cerrado":
-        TT.mod_trello(tarjetas[numero], "false", TT.recibidos_idList)
+        TT.mod_trello(tarjetas[numero], "false", TT.recibidos_idList_compras)
     else:
         print(numero, Compras[numero])
 
 # Archiva tarjetas Trello
 def elimina_Trello(numero, tarjetas):
-    TT.mod_trello(tarjetas[numero], "true", TT.recibidos_idList)
+    TT.mod_trello(tarjetas[numero], "true", TT.recibidos_idList_compras)
 
 # Archiva tarjetas Trello que no estén en el listado de Compras pendientes
 def elimina_Trello2(Compras, tarjetas):

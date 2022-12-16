@@ -44,23 +44,23 @@ def modifica_en_trello(numero, pedidos, tarjetas, fechaC):
         elimina_Trello(numero, tarjetas)
     elif estado in lista_pedidos_Cerrados:
         estado = "false"
-        TT.mod_trello(tarjetas[numero], estado, TT.listo_idList)
+        TT.mod_trello(tarjetas[numero], estado, TT.listo_idList_pedidos)
     else:
         print(numero, pedidos[numero])
 
 def post_in_trello(numero, nombre, detalle, fechaC, fechaV, local):
     if "0-02 MAURICIO DANIEL BRAVO CORDERO" in nombre:
         etiqueta = TT.etiqueta_Sodexo_pedidos
-        lista = TT.sodexo_idList
+        lista = TT.sodexo_idList_pedidos
     elif local == "MONS.":
         etiqueta = TT.etiqueta_Monsalve_pedidos
-        lista= TT.monsalve_idList
+        lista= TT.monsalve_idList_pedidos
     elif local == "PLAYA":
         etiqueta = TT.etiqueta_Playa_pedidos
-        lista = TT.playa_idList
+        lista = TT.playa_idList_pedidos
     else:
         etiqueta = False
-        lista = TT.pendientes_idList
+        lista = TT.pendientes_idList_pedidos
     tarjeta_ID = TT.post_trello(nombre, detalle, fechaC=fechaC, fechaV=fechaV, idLabels=etiqueta, idList=lista)
     b64 = PD.obtener_b64(numero)
     if b64:
@@ -68,7 +68,7 @@ def post_in_trello(numero, nombre, detalle, fechaC, fechaV, local):
 
 # Archiva tarjetas Trello
 def elimina_Trello(numero, tarjetas):
-    TT.mod_trello(tarjetas[numero], "true", TT.listo_idList)
+    TT.mod_trello(tarjetas[numero], "true", TT.listo_idList_pedidos)
 
 # Archiva tarjetas Trello que no estén en el listado de pedidos pendientes
 def elimina_Trello2(pedidos, tarjetas):

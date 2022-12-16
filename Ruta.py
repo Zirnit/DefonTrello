@@ -39,31 +39,31 @@ def modifica_en_trello(numero, tarjetas, fecha):
 def post_in_trello(nombre, detalle, fecha, direccionCliente, comuna, local):
     if "0-02 MAURICIO DANIEL BRAVO CORDERO" in nombre:
         etiquetas = [TT.etiqueta_por_preparar_ruta]
-        lista = TT.facturas_idList
+        lista = TT.facturas_idList_ruta
         coordenada, latitude, longitude = PS.obtenerCoordenadas(direccionCliente, comuna)
     elif local == "MONS.":
         etiquetas = [TT.etiqueta_Monsalve_ruta, TT.etiqueta_por_preparar_ruta]
-        lista = TT.mons_idList
+        lista = TT.mons_idList_ruta
         coordenada = ""
     elif local == "PLAYA":
         etiquetas = [TT.etiqueta_Playa_ruta, TT.etiqueta_por_preparar_ruta]
-        lista = TT.facturas_idList
+        lista = TT.facturas_idList_ruta
         coordenada, latitude, longitude = PS.obtenerCoordenadas(direccionCliente, comuna)
                 # ZRP.ingresa_punto(direccionCliente, comuna, latitude, longitude, detalle,fecha,nombre), "\n", detalle, fecha, nombre
     elif local == "Local":
         etiquetas = [TT.etiqueta_Santiago_ruta, TT.etiqueta_por_preparar_ruta]
-        lista = TT.facturas_idList
+        lista = TT.facturas_idList_ruta
         coordenada, latitude, longitude = PS.obtenerCoordenadas(direccionCliente, comuna)
                 # ZRP.ingresa_punto(direccionCliente, comuna, latitude, longitude, detalle,fecha,nombre), "\n", detalle, fecha, nombre
     else:
         etiquetas = ""
-        lista = TT.facturas_idList
+        lista = TT.facturas_idList_ruta
         coordenada = ""
     TT.post_trello(nombre, detalle, fechaC=fecha, coordenada=coordenada, idLabels=etiquetas, idList=lista)
 
 # Archiva tarjetas Trello
 def elimina_Trello(numero, tarjetas):
-    TT.mod_trello(tarjetas[numero], "true", TT.listo_idList)
+    TT.mod_trello(tarjetas[numero], "true", TT.listo_idList_ruta)
 
 # Archiva tarjetas Trello que no estén en el listado de Facturas pendientes
 def elimina_Trello2(Facturas, tarjetas):

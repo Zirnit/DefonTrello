@@ -9,26 +9,26 @@ ruta_idBoard = "633eff43035b6f00bd6ef083"
 test_idBoard = "638f8f736c3c63011f219d78"
 
 # Lista idList de Trello board "Pedidos"
-pendientes_idList = "61ce1d50882ab9559d105e44" #Pendientes Santiago
-playa_idList = "62f67cff9ba3ce0c4ffd4be2" # Pendientes playa
-monsalve_idList = "62f67d119efeba8106426433" # Pendientes Monsalve
-listo_idList = "61ce1d50882ab9559d105e46"
-sodexo_idList = "63728d27fb591a00e0656147"
+pendientes_idList_pedidos = "61ce1d50882ab9559d105e44" #Pendientes Santiago
+playa_idList_pedidos = "62f67cff9ba3ce0c4ffd4be2" # Pendientes playa
+monsalve_idList_pedidos = "62f67d119efeba8106426433" # Pendientes Monsalve
+listo_idList_pedidos = "61ce1d50882ab9559d105e46"
+sodexo_idList_pedidos = "63728d27fb591a00e0656147"
 
 # Lista idList de Trello board "Ruta"
-facturas_idList = "633eff57f7f87403c403b734" # Facturas generadas
-chof1_idList = "633eff5fbfa3aa01e0bea7af" # Byron
-chof2_idList = "633eff63eca5ab01ecb63c23" # Paulo
-mons_idList = "633eff6610e0c402d71e23d9" # Monsalve
-chof_otro_idList = "633eff69fdf9b70135d3504e" # Otros conductores
-listo_idList = "633eff6d86d9c801cce0f63e" # Pedidos entregados
+facturas_idList_ruta = "633eff57f7f87403c403b734" # Facturas generadas
+chof1_idList_ruta = "633eff5fbfa3aa01e0bea7af" # Byron
+chof2_idList_ruta = "633eff63eca5ab01ecb63c23" # Paulo
+mons_idList_ruta = "633eff6610e0c402d71e23d9" # Monsalve
+chof_otro_idList_ruta = "633eff69fdf9b70135d3504e" # Otros conductores
+listo_idList_ruta = "633eff6d86d9c801cce0f63e" # Pedidos entregados
 
 # Lista idList de Trello board "Compras"
-ordenes_idList = "6373dd6176f3a50ca68a4a98" # Órdenes de compra
-buscar_idList = "6373e63f22f54803ee382440" # Ir a buscar
-tablero_ruta_idList = "638f8fe605c6ea0069fbe69b" # Para ruta
-en_ruta_idList = "6373dd6bc5df92016c7705fe" # En ruta
-recibidos_idList = "6373dd910ea7d20154813028" # Recibidos
+ordenes_idList_compras = "6373dd6176f3a50ca68a4a98" # Órdenes de compra
+buscar_idList_compras = "6373e63f22f54803ee382440" # Ir a buscar
+tablero_ruta_idList_compras = "638f8fe605c6ea0069fbe69b" # Para ruta
+en_ruta_idList_compras = "6373dd6bc5df92016c7705fe" # En ruta
+recibidos_idList_compras = "6373dd910ea7d20154813028" # Recibidos
 
 # Etiquetas de Trello board "Pedidos"
 etiqueta_Playa_pedidos = "62eaecd5dfd104854cc9ff3d"

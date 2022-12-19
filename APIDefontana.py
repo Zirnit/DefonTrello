@@ -26,8 +26,8 @@ def detalle_pedido(numero):
     except:
         return None
     else:
-        fechaCrea = pedidoJson.json()["orderData"]["creationDate"][0:19]
-        fechaVenc = pedidoJson.json()["orderData"]["expirationDate"][0:19]
+        fechaCrea = pedidoJson.json()["orderData"]["creationDate"][:10]+"T11:00:00"
+        fechaVenc = pedidoJson.json()["orderData"]["expirationDate"][:10]+"T11:00:00"
         localPedido = pedidoJson.json()["orderData"]["shopID"]
         comentario = pedidoJson.json()["orderData"]["comment"]
         comentario_factura = pedidoJson.json()["orderData"]["billingComment"]
@@ -93,7 +93,7 @@ def detalle_Factura(numero, docType):
     querystring = {"number": numero, "documentType" : docType}
     FacturasJson = requests.request("GET", URL, headers=HK.headersDefontana, params=querystring).json()[0]
     tipoDocumento = FacturasJson["documentType"]
-    fechaEmision = FacturasJson["dateTime"][:19]
+    fechaEmision = FacturasJson["dateTime"][:10]+"T11:00:00"
     codigoCliente = FacturasJson["clientFile"]
     direccionCliente = FacturasJson["contactIndex"]
     vendedorID = FacturasJson["sellerFileId"]

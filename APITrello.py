@@ -30,6 +30,16 @@ tablero_ruta_idList_compras = "638f8fe605c6ea0069fbe69b" # Para ruta
 en_ruta_idList_compras = "6373dd6bc5df92016c7705fe" # En ruta
 recibidos_idList_compras = "6373dd910ea7d20154813028" # Recibidos
 
+# Lista idList de Trello board "Test"
+pendiente_idList_test = "638f8f9424f8370124782689"
+ruta1_idList_test = "638f8fee6e9ebb04826fff44"
+ruta2_idList_test = "63909323d66522001593bfb7"
+ruta3_idList_test = "6390932c383e3d0108870515"
+byron_idList_test = "6390a15b03b57900362c97e4"
+paulo_idList_test = "6390a15d5160fb0067ce8982"
+listo_idList_test = "638f8ff2e395e50388c8ecca"
+en_ruta_idList_test = "639348135e7e0d03d120e0c2"
+
 # Etiquetas de Trello board "Pedidos"
 etiqueta_Playa_pedidos = "62eaecd5dfd104854cc9ff3d"
 etiqueta_Monsalve_pedidos = "62f691943b8e600bfc3bad29"
@@ -102,7 +112,7 @@ def mod_trello(cardID, closed="false", idList=False, idLabel=False):
         del querystring["idLabels"]
     requests.put(trelloCard, headers=HK.trelloHeaders, params=querystring)
 
-def adjunta_pedido_PDF(card_ID,file_data,file_name):
+def adjunta_PDF(card_ID,file_data,file_name):
     querystring = {
     "key":HK.tKey,
     "token":HK.tToken   

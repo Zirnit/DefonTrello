@@ -16,19 +16,19 @@ def obtenerFacturas():
 
 # Consultar tarjetas existentes en Trello
 def obtenerTarjetas():
-    tarjetasTrello = TT.lista_tarjetas_trello(TT.ruta_idBoard)
+    tarjetasTrello = TT.lista_tarjetas_trello(TT.test_idBoard)
     return tarjetasTrello
 
 # Comparar si existe en Trello y crea tarjeta, o actualiza su estado
 def cargar_trello(numero, Facturas, tarjetas):
     try:
-        nombre, detalle, fecha, direccionCliente, comuna, local = FD.detalle_Factura(numero, Facturas[numero])
+        nombre, detalle, fecha, direccionCliente, comuna, local, tipo_documento = FD.detalle_Factura(numero, Facturas[numero])
     except:
         print(numero, Facturas[numero], "Vacío")
         return None
     else:
         if numero not in tarjetas and datetime.strptime(fecha, "%Y-%m-%dT%H:%M:%S").date() > FR.hace4dias:
-            post_in_trello(nombre, detalle, fecha, direccionCliente, comuna, local)
+            post_in_trello(numero, nombre, detalle, fecha, direccionCliente, comuna, local, tipo_documento)
         elif numero in tarjetas:
             modifica_en_trello(numero, tarjetas, fecha)
 
@@ -36,7 +36,7 @@ def modifica_en_trello(numero, tarjetas, fecha):
     if datetime.strptime(fecha, "%Y-%m-%dT%H:%M:%S").date() < FR.hace1Semana:
         elimina_Trello(numero, tarjetas)
 
-def post_in_trello(nombre, detalle, fecha, direccionCliente, comuna, local):
+def post_in_trello(numero, nombre, detalle, fecha, direccionCliente, comuna, local, tipo_documento):
     if "0-02 MAURICIO DANIEL BRAVO CORDERO" in nombre:
         etiquetas = [TT.etiqueta_por_preparar_ruta]
         lista = TT.facturas_idList_ruta
@@ -59,7 +59,10 @@ def post_in_trello(nombre, detalle, fecha, direccionCliente, comuna, local):
         etiquetas = ""
         lista = TT.facturas_idList_ruta
         coordenada = ""
-    TT.post_trello(nombre, detalle, fechaC=fecha, coordenada=coordenada, idLabels=etiquetas, idList=lista)
+    factura_ID = TT.post_trello(nombre, detalle, fechaC=fecha, coordenada=coordenada, idLabels=etiquetas, idList=lista)
+    b64 = FD.obtener_factura_b64(numero, tipo_documento)
+    if b64:
+        TT.adjunta_PDF(factura_ID,b64,f"Factura {numero}.pdf")
 
 # Archiva tarjetas Trello
 def elimina_Trello(numero, tarjetas):

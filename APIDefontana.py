@@ -43,14 +43,14 @@ def detalle_pedido(numero):
         return nombrePedidoTrello, detallePedido, fechaCrea, fechaVenc, localPedido
 
 # Regresa un base64 del pedido
-def obtener_b64(numero):
+def obtener_pedido_b64(numero):
     obtener_b64_URL = "Order/GetOrderStandardPDFDocumentBase64"
     URL = Base_URL+obtener_b64_URL
     querystring = {"folio" : numero}
-    response = requests.request("GET", URL, headers=HK.headersDefontana, params=querystring).json()
     # Trata de extraer el documento 5 intentos antes de retornar False
     for _ in range(5):
         try:
+            response = requests.request("GET", URL, headers=HK.headersDefontana, params=querystring).json()
             return response["document"]
         except Exception as e:
             print(e)
@@ -108,7 +108,7 @@ def detalle_Factura(numero, docType):
     except:
         numeroPedido = "Sin pedido asociado"
     detalle = f"Dirección: {direccionCliente}, {comuna}\nComentario: {glosa}\nReferencia pedido: {numeroPedido}\nVendedor: {nombreVendedor}"
-    return nombre, detalle, fechaEmision, direccionCliente, comuna, local
+    return nombre, detalle, fechaEmision, direccionCliente, comuna, local, tipoDocumento
 
 def consulta_Cliente(id):
     consulta_Cliente_URL = "Sale/GetClientsByFileID"
@@ -120,6 +120,23 @@ def consulta_Cliente(id):
     except:
         Cliente = "Sin información"
     return Cliente
+
+def obtener_factura_b64(folio, documentType):
+    obtener_b64_URL = "Sale/GetNewPDFDocumentBase64"
+    URL = Base_URL+obtener_b64_URL
+    querystring = {
+        "folio" : folio,
+        "documentType": documentType,
+        "isCedible" : "false"
+        }
+    # Trata de extraer el documento 5 intentos antes de retornar False
+    for _ in range(5):
+        try:
+            response = requests.request("GET", URL, headers=HK.headersDefontana, params=querystring).json()
+            return response["document"]
+        except Exception as e:
+            print(e)
+    return False
 
 # Compras
 def lista_Compras():

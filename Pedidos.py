@@ -62,9 +62,9 @@ def post_in_trello(numero, nombre, detalle, fechaC, fechaV, local):
         etiqueta = False
         lista = TT.pendientes_idList_pedidos
     tarjeta_ID = TT.post_trello(nombre, detalle, fechaC=fechaC, fechaV=fechaV, idLabels=etiqueta, idList=lista)
-    b64 = PD.obtener_b64(numero)
+    b64 = PD.obtener_pedido_b64(numero)
     if b64:
-        TT.adjunta_pedido_PDF(tarjeta_ID,b64,f"Pedido {numero}.pdf")
+        TT.adjunta_PDF(tarjeta_ID,b64,f"Pedido {numero}.pdf")
 
 # Archiva tarjetas Trello
 def elimina_Trello(numero, tarjetas):

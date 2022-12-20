@@ -52,5 +52,5 @@ def obtener_tarjetas(board_ID):
 
 # obtener_boards()
 # obtener_listas("638f8f736c3c63011f219d78")
-# obtener_etiquetas("6373dcefc0f5a70075826fea")
+obtener_etiquetas("633eff43035b6f00bd6ef083")
 # obtener_tarjetas("638f8f736c3c63011f219d78")

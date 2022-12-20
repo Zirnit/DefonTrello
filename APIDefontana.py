@@ -75,8 +75,8 @@ Vendedores = {
 def lista_facturas():
     lista_facturas_URL = "Sale/GetSalebyDate"
     URL = Base_URL+lista_facturas_URL
-    querystring1 = {"initialDate":FR.anteayer,"endingDate":FR.hoy,"itemsPerPage":"1000","pageNumber":"0", "documentType": "FVAELECT"}
-    querystring2 = {"initialDate":FR.anteayer,"endingDate":FR.hoy,"itemsPerPage":"1000","pageNumber":"0", "documentType": "FVARSELECT"}
+    querystring1 = {"initialDate":FR.hace1Semana,"endingDate":FR.hoy,"itemsPerPage":"1000","pageNumber":"0", "documentType": "FVAELECT"}
+    querystring2 = {"initialDate":FR.hace1Semana,"endingDate":FR.hoy,"itemsPerPage":"1000","pageNumber":"0", "documentType": "FVARSELECT"}
     listaFacturasJson = requests.request("GET", URL, headers=HK.headersDefontana, params=querystring1).json()
     listaFacturasJson2 = requests.request("GET", URL, headers=HK.headersDefontana, params=querystring2).json()
     listaFacturasDefon = {}
@@ -135,7 +135,8 @@ def obtener_factura_b64(folio, documentType):
             response = requests.request("GET", URL, headers=HK.headersDefontana, params=querystring).json()
             return response["document"]
         except Exception as e:
-            print(e)
+            pass
+    print("error folio ", folio, e)
     return False
 
 # Compras

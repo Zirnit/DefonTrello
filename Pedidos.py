@@ -40,8 +40,9 @@ def modifica_en_trello(numero, pedidos, tarjetas, fechaC):
     estado = pedidos[numero]
     if estado == "P (PENDIENTE)":
         pass
-    elif datetime.strptime(fechaC, "%Y-%m-%dT%H:%M:%S").date() < FR.ayer and estado in lista_pedidos_Cerrados:
-        elimina_Trello(numero, tarjetas)
+    # Prefiero que Trello elimite los pedidos antiguos, en vez del script
+    # elif datetime.strptime(fechaC, "%Y-%m-%dT%H:%M:%S").date() < FR.ayer and estado in lista_pedidos_Cerrados:
+    #     elimina_Trello(numero, tarjetas)
     elif estado in lista_pedidos_Cerrados:
         estado = "false"
         TT.mod_trello(tarjetas[numero], estado, TT.listo_idList_pedidos)

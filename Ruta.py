@@ -88,13 +88,13 @@ def principal():
     # elimina_Trello2(Facturas, tarjetas)
 
 # Bucle que mantiene el programa actualizándose   
-# while True:
-#     try:
-#         principal()
-#     except Exception as e:
-#         print(e)
-#     # time.sleep(300) # Tiempo de espera: 5 minutos
-#     # Siempre que esté corriendo en el servidor, no vale la pena tener el tiempo de espera
-#     FR = reload(FR)
+while True:
+    try:
+        principal()
+    except Exception as e:
+        print(e)
+    # time.sleep(300) # Tiempo de espera: 5 minutos
+    # Siempre que esté corriendo en el servidor, no vale la pena tener el tiempo de espera
+    FR = reload(FR)
 
 principal() #Test

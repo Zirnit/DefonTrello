@@ -7,6 +7,7 @@ import APIDefontana as PD
 import APITrello as TT
 
 registro_pedidos = {}
+registro_tarjetas = {}
 
 lista_pedidos_Cerrados = ["EFX (EN_DESPACHO_FACTURADO)", "EEX (EN_DESPACHO_EN_FACTURACION)", 
 "DEX (DESPACHADO_EN_FACTURACION)", "DFX (DESPACHADO_FACTURADO)", "M (CERRADO_MANUAL)"]
@@ -80,15 +81,20 @@ def elimina_Trello2(pedidos, tarjetas):
 # Función principal, que ejecuta las funciones necesarias para correr el código
 def principal():
     pedidos = obtenerPedidos()
+    tarjetas = obtenerTarjetas()
     global registro_pedidos
+    global registro_tarjetas
     if pedidos != registro_pedidos:
-        tarjetas = obtenerTarjetas()
         for item in pedidos:
             if item not in registro_pedidos or pedidos[item] != registro_pedidos[item]:
                 cargar_trello(item, pedidos, tarjetas)
         registro_pedidos = pedidos
-        elimina_Trello2(pedidos, tarjetas)
-
+    if tarjetas != registro_tarjetas:
+        for item in registro_tarjetas:
+            if item in pedidos and item not in tarjetas:
+                cargar_trello(item, pedidos, tarjetas)
+        registro_tarjetas = tarjetas
+    
 # Bucle que mantiene el programa actualizándose   
 while True:
     try:

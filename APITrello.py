@@ -63,7 +63,8 @@ Otro_idLabel_ruta = "63406141a4859a0397ffea4b"
 Sodexo_idLabel_ruta = "63a1be69f60b7a011572d0e2"
 
 # Etiquetas de Trello board "Compras"
-etiqueta_Buscar_compras = "63908b900b85c702061ab85f"
+IraBuscar_idLabel_compras = "63908b900b85c702061ab85f"
+Anulado_idLabel_compras = "63a33307006c6c0193bbb36f"
 
 # Create Trello card
 def post_trello(nombre, detalle, fechaC=False, fechaV=False, coordenada=False, idLabels=False, idList=False):

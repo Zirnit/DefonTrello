@@ -37,8 +37,8 @@ def post_in_trello(nombre, detalle, fechaEmision, fechaRecepcion, comuna, despac
         lista = TT.ordenes_idList_compras
         coordenada = ""
     else:
-        etiqueta = ""
-        lista = TT.IraBuscar_idLabel_compras
+        etiqueta = TT.IraBuscar_idLabel_compras
+        lista = TT.buscar_idList_compras
         detalle += f"\nIr a buscar a {despacho}"
         coordenada, latitude, longitude= PS.obtenerCoordenadas(despacho, comuna)
     TT.post_trello(nombre, detalle, fechaC=fechaEmision, fechaV=fechaRecepcion, coordenada=coordenada, idLabels=etiqueta, idList=lista)
@@ -80,13 +80,13 @@ def principal():
     # elimina_Trello2(Compras, tarjetas)
 
 # Bucle que mantiene el programa actualizándose   
-while True:
-    try:
-        principal()
-    except Exception as e:
-        print("Error en bucle principal Compras ",e)
-    # time.sleep(300) # Tiempo de espera: 5 minutos
-    # Siempre que esté corriendo en el servidor, no vale la pena tener el tiempo de espera
-    FR = reload(FR)
+# while True:
+#     try:
+#         principal()
+#     except Exception as e:
+#         print("Error en bucle principal Compras ",e)
+#     # time.sleep(300) # Tiempo de espera: 5 minutos
+#     # Siempre que esté corriendo en el servidor, no vale la pena tener el tiempo de espera
+#     FR = reload(FR)
 
 principal() #Test

@@ -53,7 +53,8 @@ def obtener_pedido_b64(numero):
             response = requests.request("GET", URL, headers=HK.headersDefontana, params=querystring).json()
             return response["document"]
         except Exception as e:
-            print(e)
+            pass
+    print("Error al obtener b64 pedido: ", numero, e)
     return False
 
 
@@ -136,7 +137,7 @@ def obtener_factura_b64(folio, documentType):
             return response["document"]
         except Exception as e:
             pass
-    print("error folio ", folio, e)
+    print("Error al obtener b64 factura folio ", folio, e)
     return False
 
 # Compras

@@ -92,7 +92,7 @@ while True:
     try:
         principal()
     except Exception as e:
-        print(e)
+        print("Error en bucle principal Ruta ",e)
     # time.sleep(300) # Tiempo de espera: 5 minutos
     # Siempre que esté corriendo en el servidor, no vale la pena tener el tiempo de espera
     FR = reload(FR)

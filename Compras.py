@@ -47,6 +47,8 @@ def modificar_en_trello(numero, Compras, tarjetas, fechaEmision, fechaRecepcion)
     estado = Compras[numero]
     if estado == "Aprobado" and fechaRecepcion == FR.hoy:
         TT.mod_trello(tarjetas[numero], "false", TT.en_ruta_idList_compras)
+    elif estado == "Aprobado":
+        pass
     elif estado == "Anulado":
         TT.mod_trello(tarjetas[numero], idLabel=TT.Anulado_idLabel_compras, idList=TT.recibidos_idList_compras)
     elif datetime.strptime(fechaEmision, "%Y-%m-%dT%H:%M:%S").date() < FR.hace2Semanas and estado == "Cerrado":
@@ -80,13 +82,13 @@ def principal():
     # elimina_Trello2(Compras, tarjetas)
 
 # Bucle que mantiene el programa actualizándose   
-# while True:
-#     try:
-#         principal()
-#     except Exception as e:
-#         print("Error en bucle principal Compras ",e)
-#     # time.sleep(300) # Tiempo de espera: 5 minutos
-#     # Siempre que esté corriendo en el servidor, no vale la pena tener el tiempo de espera
-#     FR = reload(FR)
+while True:
+    try:
+        principal()
+    except Exception as e:
+        print("Error en bucle principal Compras ",e)
+    # time.sleep(300) # Tiempo de espera: 5 minutos
+    # Siempre que esté corriendo en el servidor, no vale la pena tener el tiempo de espera
+    FR = reload(FR)
 
 principal() #Test

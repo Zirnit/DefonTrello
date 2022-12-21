@@ -63,7 +63,7 @@ Otro_idLabel_ruta = "63406141a4859a0397ffea4b"
 Sodexo_idLabel_ruta = "63a1be69f60b7a011572d0e2"
 
 # Etiquetas de Trello board "Compras"
-IraBuscar_idLabel_compras = "63908b900b85c702061ab85f"
+IraBuscar_idLabel_compras = "63934b547e801d0174acb64b"
 Anulado_idLabel_compras = "63a33307006c6c0193bbb36f"
 
 # Create Trello card

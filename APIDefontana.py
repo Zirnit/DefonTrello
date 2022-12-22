@@ -48,7 +48,7 @@ def obtener_pedido_b64(numero):
     URL = Base_URL+obtener_b64_URL
     querystring = {"folio" : numero}
     # Trata de extraer el documento 5 intentos antes de retornar False
-    for _ in range(5):
+    for _ in range(10):
         try:
             response = requests.request("GET", URL, headers=HK.headersDefontana, params=querystring).json()
             return response["document"]
@@ -131,7 +131,7 @@ def obtener_factura_b64(folio, documentType):
         "isCedible" : "false"
         }
     # Trata de extraer el documento 5 intentos antes de retornar False
-    for _ in range(5):
+    for _ in range(10):
         try:
             response = requests.request("GET", URL, headers=HK.headersDefontana, params=querystring).json()
             return response["document"]

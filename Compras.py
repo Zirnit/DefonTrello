@@ -26,7 +26,7 @@ def cargar_trello(numero, Compras, tarjetas):
         print(numero, Compras[numero], "Vacío")
         return None
     else:
-        if numero not in tarjetas and datetime.strptime(fechaEmision, "%Y-%m-%dT%H:%M:%S").date() > FR.hace2Semanas:
+        if numero not in tarjetas and datetime.strptime(fechaEmision, "%Y-%m-%dT%H:%M:%S").date() > FR.hace2Semanas and Compras[numero] == "Aprobado":
             post_in_trello(nombre, detalle, fechaEmision, fechaRecepcion, comuna, despacho)
         elif numero in tarjetas:
             modificar_en_trello(numero, Compras, tarjetas, fechaEmision, fechaRecepcion)

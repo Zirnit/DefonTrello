@@ -32,13 +32,17 @@ def detalle_pedido(numero):
         comentario = pedidoJson.json()["orderData"]["comment"]
         comentario_factura = pedidoJson.json()["orderData"]["billingComment"]
         comentario_despacho = pedidoJson.json()["orderData"]["dispatchComment"]
-        detallePedido = ""
+        detallePedido = "###Código | Cant. | Descripción\n"
+        for number, item in enumerate(pedidoJson.json()["orderData"]["details"]):
+            detallePedido+=f"{str(number+1)}. "+(item["code"])+" | "
+            detallePedido+=(str(item["count"]))+" | "
+            detallePedido+=(item["name"])+"\n"
         if comentario:
-            detallePedido += "\nComentario: "+comentario
+            detallePedido += "\n---\n>Comentario: "+comentario
         if comentario_factura:
-            detallePedido += "\nComentario factura: "+comentario_factura
+            detallePedido += "\n---\n>Comentario factura: "+comentario_factura
         if comentario_despacho:
-            detallePedido += "\nComentario despacho: "+comentario_despacho
+            detallePedido += "\n---\n>Comentario despacho: "+comentario_despacho
         nombrePedidoTrello = str(numero)+" - "+nombreCliente
         return nombrePedidoTrello, detallePedido, fechaCrea, fechaVenc, localPedido
 

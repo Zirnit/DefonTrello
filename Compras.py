@@ -53,7 +53,7 @@ def modificar_en_trello(numero, Compras, tarjetas, fechaEmision, fechaRecepcion)
         TT.mod_trello(tarjetas[numero], idLabel=TT.Anulado_idLabel_compras, idList=TT.recibidos_idList_compras)
     elif datetime.strptime(fechaEmision, "%Y-%m-%dT%H:%M:%S").date() < FR.hace2Semanas and estado == "Cerrado":
         elimina_Trello(numero, tarjetas)
-    elif estado == "Cerrado":
+    elif estado == "Cerrado" or estado == "Completamente Recepcionado":
         TT.mod_trello(tarjetas[numero], "false", TT.recibidos_idList_compras)
     else:
         print(numero, Compras[numero])

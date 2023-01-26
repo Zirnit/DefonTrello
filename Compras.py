@@ -7,6 +7,7 @@ from datetime import datetime
 from importlib import reload
 
 registro_compras = {}
+registro_tarjetas = {}
 
 # Consultar Compras en defontana
 def obtenerCompras():
@@ -72,13 +73,19 @@ def elimina_Trello2(Compras, tarjetas):
 
 def principal():
     Compras = obtenerCompras()
+    tarjetas = obtenerTarjetas()
     global registro_compras
+    global registro_tarjetas
     if Compras != registro_compras:
-        tarjetas = obtenerTarjetas()
         for item in Compras:
             if item not in registro_compras or Compras[item] != registro_compras[item]:
                 cargar_trello(item, Compras, tarjetas)
         registro_compras = Compras
+    if tarjetas != registro_tarjetas:
+        for item in registro_tarjetas:
+            if item in Compras and item not in tarjetas:
+                cargar_trello(item, Compras, tarjetas)
+        registro_tarjetas = tarjetas
     # elimina_Trello2(Compras, tarjetas)
 
 # Bucle que mantiene el programa actualizándose   

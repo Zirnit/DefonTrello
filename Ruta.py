@@ -8,6 +8,7 @@ from datetime import datetime
 from importlib import reload
 
 registro_facturas = {}
+registro_tarjetas = {}
 
 # Consultar Facturas en defontana
 def obtenerFacturas():
@@ -78,13 +79,19 @@ def elimina_Trello2(Facturas, tarjetas):
 # Función principal, que ejecuta las funciones necesarias para correr el código
 def principal():
     Facturas = obtenerFacturas()
+    tarjetas = obtenerTarjetas()
     global registro_facturas
+    global registro_tarjetas
     if Facturas != registro_facturas:
-        tarjetas = obtenerTarjetas()
         for item in Facturas:
             if item not in registro_facturas or Facturas[item] != registro_facturas[item]:
                 cargar_trello(item, Facturas, tarjetas)
         registro_facturas = Facturas
+    if tarjetas != registro_tarjetas:
+        for item in registro_tarjetas:
+            if item in Facturas and item not in tarjetas:
+                cargar_trello(item, Facturas, tarjetas)
+        registro_tarjetas = tarjetas
     # elimina_Trello2(Facturas, tarjetas)
 
 # Bucle que mantiene el programa actualizándose   

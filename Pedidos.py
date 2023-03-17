@@ -15,11 +15,15 @@ lista_pedidos_Semilistos = ["EFX (EN_DESPACHO_FACTURADO)", "EEX (EN_DESPACHO_EN_
 "DEX (DESPACHADO_EN_FACTURACION)"]
 
 # Consultar pedidos en defontana
+# Devuelve un diccionario donde las keys son el número de pedido y los values son el estado del pedido
 def obtenerPedidos():
     pedidosDefontana = PD.lista_pedidos()
     return pedidosDefontana
 
-# Consultar tarjetas existentes en Trello
+# Consultar tarjetas existentes en Trello, en el tablero de pedidos
+# Devuelve un diccionario donde 
+# las keys son el número del pedido (cualquier número escrito en una tarjeta hasta el primer espacio)
+# y los values son el ID de la tarjeta
 def obtenerTarjetas():
     tarjetasTrello = TT.lista_tarjetas_trello(TT.pedidos_idBoard)
     return tarjetasTrello
@@ -41,7 +45,7 @@ def modifica_en_trello(numero, pedidos, tarjetas, fechaC):
     estado = pedidos[numero]
     if estado == "P (PENDIENTE)":
         pass
-    # Prefiero que Trello elimite los pedidos antiguos, en vez del script
+    # Prefiero que Trello archive los pedidos antiguos, en vez del script
     # elif datetime.strptime(fechaC, "%Y-%m-%dT%H:%M:%S").date() < FR.ayer and estado in lista_pedidos_Cerrados:
     #     elimina_Trello(numero, tarjetas)
     elif estado in lista_pedidos_Cerrados:
@@ -94,6 +98,7 @@ def principal():
             if item in pedidos and item not in tarjetas:
                 cargar_trello(item, pedidos, tarjetas)
         registro_tarjetas = tarjetas
+    elimina_Trello2(pedidos, tarjetas)
     
 # Bucle que mantiene el programa actualizándose   
 while True:

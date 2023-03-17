@@ -8,7 +8,7 @@ Base_URL = "https://api.defontana.com/api/"
 def lista_pedidos():
     lista_pedidos_URL = "Order/List"
     URL = Base_URL+lista_pedidos_URL
-    querystring = {"FromDate":FR.hace1Semana,"ToDate":FR.en1Semana,"ItemsPerPage":"1000","PageNumber":"0","fromNumber":"4400"}
+    querystring = {"FromDate":FR.hace2Semanas,"ToDate":FR.en1Semana,"ItemsPerPage":"1000","PageNumber":"0","fromNumber":"4400"}
     listaPedidosJson = requests.request("GET", URL, headers=HK.headersDefontana, params=querystring).json()
     listaStatusPedidosDefon = {}
     for i in listaPedidosJson["items"]:
